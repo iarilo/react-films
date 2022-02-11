@@ -3,7 +3,7 @@ import { FunListmain } from '../component/ListMain';
 import { FanPreloader } from '../component/Preloader';
 import { FanSearch } from '../component/Search';
 
- //const API_KEY = process.env.REACT_APP_API_KEY;
+ const API_KEY = process.env.REACT_APP_API_KEY;
 
 class FanMain extends React.Component {
   constructor() {
@@ -17,7 +17,7 @@ class FanMain extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`https://www.omdbapi.com/?apikey=27a5ebd5&s=matrix`)
+    fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=matrix`)
       .then(response => response.json())
       .then(data => this.setState(
         {films:data.Search,loading:false }))
@@ -29,7 +29,7 @@ class FanMain extends React.Component {
   searchMovies(str, type = 'all') {
     this.setState({loading:true});
     //&type=${type} & скрепление гет параметров
-    fetch(`https://www.omdbapi.com/?apikey=27a5ebd5&s=${str}${type !== 'all' ? `&type=${type}` : ''}`)
+    fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${str}${type !== 'all' ? `&type=${type}` : ''}`)
       .then((response) => response.json())
       .then((data) => {
        this.setState({films:data.Search, loading:false})
