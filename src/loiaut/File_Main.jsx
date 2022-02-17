@@ -3,7 +3,7 @@ import { FunListmain } from '../component/ListMain';
 import { FanPreloader } from '../component/Preloader';
 import { FanSearch } from '../component/Search';
 
-const API_KEY = process.env.REACT_APP_API_KEY;
+
 
 function FanMain (){
   const [films,setFilms] = useState([]);
@@ -22,7 +22,7 @@ function FanMain (){
  useEffect(()=>{
    fetch(`http://www.omdbapi.com/?apikey=27a5ebd5&s=matrix`)
      .then(response => response.json())
-     .then(data => {setFilms(data.Search);setLoading(false);})
+     .then(data => {setFilms(data.Search);setLoading(false);});
   //.catch((err) => {console.error(err);setLoading(false); });
  },[]);
 
