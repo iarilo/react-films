@@ -3,7 +3,7 @@ import { FunListmain } from '../component/ListMain';
 import { FanPreloader } from '../component/Preloader';
 import { FanSearch } from '../component/Search';
 
-
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 function FanMain (){
   const [films,setFilms] = useState([]);
@@ -13,14 +13,14 @@ function FanMain (){
   function searchMovies(str, type = 'all') {
     setLoading(true);
     //&type=${type} & скрепление гет параметров
-    fetch(`http://www.omdbapi.com/?apikey=27a5ebd5&s=${str}${type !== 'all' ? `&type=${type}` : ''}`)
+    fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${str}${type !== 'all' ? `&type=${type}` : ''}`)
       .then((response) => response.json())
       .then((data)=>{setFilms( data.Search);setLoading(false);})
    // .catch((err)=>{console.error(err); setLoading(false); });
    }
 
  useEffect(()=>{
-   fetch(`http://www.omdbapi.com/?apikey=27a5ebd5&s=matrix`)
+   fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=matrix`)
      .then(response => response.json())
      .then(data => {setFilms(data.Search);setLoading(false);});
   //.catch((err) => {console.error(err);setLoading(false); });
