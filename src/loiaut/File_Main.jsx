@@ -13,17 +13,17 @@ function FanMain (){
   function searchMovies(str, type = 'all') {
     setLoading(true);
     //&type=${type} & скрепление гет параметров
-    fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${str}${type !== 'all' ? `&type=${type}` : ''}`)
+    fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${str}${type !== 'all' ? `&type=${type}` : ''}`)
       .then((response) => response.json())
       .then((data)=>{setFilms( data.Search);setLoading(false);})
-   // .catch((err)=>{console.error(err); setLoading(false); });
+      .catch((err)=>{console.error(err); setLoading(false); });
    }
 
  useEffect(()=>{
-   fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=matrix`)
+   fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=matrix`)
      .then(response => response.json())
-     .then(data => {setFilms(data.Search);setLoading(false);});
-  //.catch((err) => {console.error(err);setLoading(false); });
+     .then(data => {setFilms(data.Search);setLoading(false);})
+     .catch((err) => {console.error(err);setLoading(false); });
  },[]);
 
 
