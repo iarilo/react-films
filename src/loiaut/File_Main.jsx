@@ -3,8 +3,8 @@ import { FunListmain } from '../component/ListMain';
 import { FanPreloader } from '../component/Preloader';
 import { FanSearch } from '../component/Search';
 
-const API_KEY = process.env.REACT_APP_API_KEY;
 
+const API_KEY = process.env.REACT_APP_API_KEY;
 function FanMain (){
   const [films,setFilms] = useState([]);
   const [loading,setLoading] = useState(true);
